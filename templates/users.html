@@ -1,0 +1,36 @@
+<!Doctype html>
+<title>List of users</title>
+
+<p><a href="{{ url_for('.add_user_view') }}"> Add User </a></p>
+
+<p>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+{% for message in messages %}
+<li>{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+</p>
+{% if users %}
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Date of join</th>
+      </tr>
+        {% for user in users %}
+          <tr>
+            <td>{{ user.1 }}</td>
+            <td>{{ user.2 }}</td>
+            <td>{{ user.4 }}</td>
+            <td>{{ user.5 }}</td>
+            <td><a href="/edit/{{ user.0 }}">Edit</a></td>
+            <td><a href="/delete/{{ user.0 }}">Delete</a></td>
+          </tr>
+        {% endfor %}
+    </table>
+{% endif %}
