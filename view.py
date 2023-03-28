@@ -1,6 +1,5 @@
-import pymysql
 from app import app
-from db import cmx, cursor_connection
+from db import cursor_connection
 from datetime import datetime
 from flask import flash, render_template, request, redirect
 from werkzeug.security import generate_password_hash
